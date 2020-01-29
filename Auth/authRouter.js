@@ -47,7 +47,6 @@ router.post("/login", (req, res) => {
       if (usr && bcrypt.compareSync(req.body.password, usr[0].password)) {
         req.session.user = req.body.username;
         const token = generateToken(usr);
-        // req.session.token = token;
         res.status(200).json({
           message: `Welcome, ${usr[0].username}!`,
           token
